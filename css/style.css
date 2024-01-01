@@ -274,10 +274,17 @@
   }
 
   .primary-navigation {
-    --gap: 8rem;
+    position: fixed !important;
+    background-color: black;
+    left: 20%;
+    inset: 0 0 0 20% !important;
+    z-index: 5;
+    /* --gap: 8rem; */
     --underline-gap: 2rem;
-    padding: 0;
+    padding: min(20rem, 15vh) 2rem;
+    /* padding-inline: 3rem; */
     margin: 0;
+    flex-direction: column;
   }
 
   .primary-navigation a > span {
@@ -300,7 +307,9 @@
     color: hsl(var(--almost-white) / 1);
     border-color: hsl(var(--almost-white) / 1);
   }
+}
 
+@layer explore-button {
   .large-button {
     font-size: 2rem;
     position: relative;
@@ -322,10 +331,77 @@
     opacity: 0;
     transition: opacity 500ms linear, transform 750ms ease-in-out;
   }
+  .pulser {
+    width: 10px;
+    height: 10px;
+    background: hsl(var(--deep-blue));
+    border-radius: 50%;
+    position: absolute;
+    top: 48.5%;
+    left: 48%;
+    /* transform: translateY(120px); */
+    animation: orbit 5s linear infinite;
+    z-index: 3;
+  }
+  .pulser1 {
+    width: 10px;
+    height: 10px;
+    background: hsl(var(--deep-blue));
+    border-radius: 50%;
+    position: absolute;
+    top: 48.5%;
+    left: 48%;
+    /* transform: translateY(120px); */
+    animation: orbit1 5s linear infinite;
+    z-index: 3;
+  }
+
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(130px);
+    }
+    to {
+      transform: rotate(360deg) translateX(130px);
+    }
+  }
+
+  @keyframes orbit1 {
+    from {
+      transform: rotate(0deg) translateX(130px);
+    }
+    to {
+      transform: rotate(-360deg) translateX(130px);
+    }
+  }
+
+  .large-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: hsl(var(--almost-white) / 0.1);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+    animation: pulse 1500ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+  }
+  @keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
   .large-button:hover::after,
   .large-button:focus::after {
     opacity: 1;
     transform: scale(1.5);
+    animation: none;
   }
 }
 
@@ -353,3 +429,6 @@
     }
   }
 }
+
+
+

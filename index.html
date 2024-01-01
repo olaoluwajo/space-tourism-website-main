@@ -13,8 +13,9 @@
       <div>
         <img src="/assets/shared/logo.svg" alt="LOGO" class="logo" />
       </div>
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
       <nav>
-        <ul class="primary-navigation underline-indicators flex">
+        <ul id="primary-navigation"  class="primary-navigation underline-indicators flex">
           <li class="active">
             <a href="index.html" class="ff-serif-cond uppercase text-white letter-spacing-2"><span>00</span>Home</a>
           </li>
@@ -35,7 +36,13 @@
         <h1 class="text-middle ff-serif-cond fs-500 uppercase">So, you want to travel to <span class="d-block text-white fs-900 ff-serif letter-spacing-3"> Space</span></h1>
         <p>Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!</p>
       </div>
-      <div><a href="#" class="large-button uppercase bg-white  text-dark ff-serif">Explore</a></div>
+      <div class="circle">
+        <a href="#" class="large-button uppercase bg-white text-dark ff-serif"
+          ><div class="pulser"></div>
+          <div class="pulser1"></div>
+          Explore</a
+        >
+      </div>
     </div>
   </body>
 </html>
