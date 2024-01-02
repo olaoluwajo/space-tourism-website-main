@@ -21,6 +21,7 @@
     --fs-700: 1.5rem;
     --fs-600: 1rem;
     --fs-500: 1.75rem;
+    --fs-450: 1.6rem;
     --fs-400: 0.9375rem;
     --fs-300: 1rem;
     --fs-200: 0.875rem;
@@ -104,6 +105,7 @@
     color: hsl(var(--almost-white));
     display: grid;
     grid-template-rows: min-content 1fr;
+    overflow-y: hidden;
   }
   img,
   picture {
@@ -189,6 +191,9 @@
   .fs-500 {
     font-size: var(--fs-500);
   }
+  .fs-450 {
+    font-size: var(--fs-450);
+  }
   .fs-400 {
     font-size: var(--fs-400);
   }
@@ -272,40 +277,82 @@
     white-space: nowrap;
     border-width: 0;
   }
+  @layer navigation {
+    .primary-navigation {
+      --underline-gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
 
-  .primary-navigation {
-    position: fixed !important;
-    background-color: black;
-    left: 20%;
-    inset: 0 0 0 20% !important;
-    z-index: 5;
-    /* --gap: 8rem; */
-    --underline-gap: 2rem;
-    padding: min(20rem, 15vh) 2rem;
-    /* padding-inline: 3rem; */
-    margin: 0;
-    flex-direction: column;
-  }
+    .mobile-nav-toggle {
+      display: none;
+    }
 
-  .primary-navigation a > span {
-    font-weight: 700;
-    margin-right: 0.5em;
-  }
+    @media (max-width: 35em) {
+      .primary-navigation {
+        position: fixed !important;
+        backdrop-filter: blur(2rem) !important;
 
-  .underline-indicators > * {
-    padding: var(--underline-gap, 1rem) 0;
-    border-bottom: 0.2em solid hsl(var(--almost-white) / 0);
-  }
+        /* background-color: black; */
+        left: 20%;
+        inset: 0 0 0 30% !important;
+        z-index: 5;
+        --underline-gap: 0rem;
+        padding: min(20rem, 15vh) 2rem;
+        margin: 0;
+        flex-direction: column;
+        transform: translate(100%);
+      }
+      .primary-navigation.underline-indicators > .active {
+        border: none;
+      }
 
-  .underline-indicators > *:hover,
-  .underline-indicators > *:focus {
-    border-color: hsl(var(--almost-white) / 0.5);
-  }
+      /* .underline-indicators > * {
+        padding: 0 !important;
+        border-bottom: none !important;
+      } */
 
-  .underline-indicators > .active,
-  .underline-indicators > [aria-selected="true"] {
-    color: hsl(var(--almost-white) / 1);
-    border-color: hsl(var(--almost-white) / 1);
+      .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        right: 1rem;
+        top: 2rem;
+        background: transparent;
+        background-image: url(/assets/shared/icon-hamburger.svg);
+        background-repeat: no-repeat;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        /* height: 1.5rem; */
+        border: 0;
+      }
+      @media (hover: hover) {
+        .underline-indicators > *:hover {
+          border-color: hsl(var(--clr-white) / 0.5);
+        }
+      }
+    }
+
+    .primary-navigation a > span {
+      font-weight: 700;
+      margin-right: 0.5em;
+    }
+
+    .underline-indicators > * {
+      padding: var(--underline-gap, 1rem) 0;
+      border-bottom: 0.2em solid hsl(var(--almost-white) / 0);
+    }
+
+    .underline-indicators > *:hover,
+    .underline-indicators > *:focus {
+      border-color: hsl(var(--almost-white) / 0.5);
+    }
+
+    .underline-indicators > .active,
+    .underline-indicators > [aria-selected="true"] {
+      color: hsl(var(--almost-white) / 1);
+      border-color: hsl(var(--almost-white) / 1);
+    }
   }
 }
 
@@ -316,7 +363,7 @@
     z-index: 1;
     display: inline-grid;
     place-items: center;
-    padding: 0 2em;
+    padding: 0 1em;
     border-radius: 50%;
     aspect-ratio: 1;
   }
@@ -356,22 +403,21 @@
     z-index: 3;
   }
 
-
   @keyframes orbit {
     from {
-      transform: rotate(0deg) translateX(130px);
+      transform: rotate(0deg) translateX(99px);
     }
     to {
-      transform: rotate(360deg) translateX(130px);
+      transform: rotate(360deg) translateX(100px);
     }
   }
 
   @keyframes orbit1 {
     from {
-      transform: rotate(0deg) translateX(130px);
+      transform: rotate(0deg) translateX(100px);
     }
     to {
-      transform: rotate(-360deg) translateX(130px);
+      transform: rotate(-360deg) translateX(100px);
     }
   }
 
@@ -429,6 +475,3 @@
     }
   }
 }
-
-
-
