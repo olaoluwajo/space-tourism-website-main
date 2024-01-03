@@ -278,9 +278,25 @@
     border-width: 0;
   }
   @layer navigation {
+   .logo{
+    /* margin: 1rem; */
+    margin : 1.5rem clamp(1.5rem, 5vw, 3.5rem) ;
+
+   }
+
+   .primary-header{
+    justify-content: space-between;
+    align-items: center;
+   }
+
     .primary-navigation {
       --underline-gap: 2rem;
       padding: 0;
+      backdrop-filter: blur(1.5rem) ;
+      background: hsl( var(--almost-white) / 0.05);
+
+      /* background-color: white; */
+
       margin: 0;
     }
 
@@ -291,26 +307,25 @@
     @media (max-width: 35em) {
       .primary-navigation {
         position: fixed !important;
-        backdrop-filter: blur(2rem) !important;
-
-        /* background-color: black; */
-        left: 20%;
-        inset: 0 0 0 30% !important;
+        /* backdrop-filter: blur(2rem) !important; */
+        inset: 0 0 0 28% !important;
         z-index: 5;
         --underline-gap: 0rem;
         padding: min(20rem, 15vh) 2rem;
         margin: 0;
         flex-direction: column;
         transform: translate(100%);
+        transition: ease-in-out .5s;
       }
+
+      .primary-navigation[data-visible="true"] {
+        transform: translate(0);
+      }
+
       .primary-navigation.underline-indicators > .active {
         border: none;
       }
 
-      /* .underline-indicators > * {
-        padding: 0 !important;
-        border-bottom: none !important;
-      } */
 
       .mobile-nav-toggle {
         display: block;
@@ -321,14 +336,26 @@
         background: transparent;
         background-image: url(/assets/shared/icon-hamburger.svg);
         background-repeat: no-repeat;
+        background-position: center;
         width: 1.5rem;
         aspect-ratio: 1;
         /* height: 1.5rem; */
         border: 0;
+        transition: ease-in-out .5s;
       }
+
+      .mobile-nav-toggle[aria-expanded = true] {
+        background-image: url(/assets/shared/icon-close.svg);
+      }
+
+      .mobile-nav-toggle:focus-visible{
+        /* outline: 3px solid red; */
+        /* outline-offset: 5px; */
+      }
+
       @media (hover: hover) {
         .underline-indicators > *:hover {
-          border-color: hsl(var(--clr-white) / 0.5);
+          border-color: hsl(var(--almost-white) / 0.5);
         }
       }
     }
@@ -336,6 +363,12 @@
     .primary-navigation a > span {
       font-weight: 700;
       margin-right: 0.5em;
+    }
+
+    @media (min-width: 35em) and (max-width:45em) {
+      .primary-navigation a > span {
+        display: none;
+      }
     }
 
     .underline-indicators > * {
