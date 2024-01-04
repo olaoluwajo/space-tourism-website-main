@@ -247,7 +247,7 @@
   }
   .flow > *:where(:not(:first-child)) {
     margin-top: var(--flow-space, 1rem);
-}
+  }
 
   .container {
     padding-inline: 2em;
@@ -550,9 +550,9 @@
     padding-inline: 1rem;
     padding-bottom: 4rem;
   }
-  .grid-container > * {
+  .grid-container p:not([class]) {
     max-width: 50ch;
-  }
+}
   .numbered-title {
     grid-area: title;
   }
@@ -560,7 +560,7 @@
   /* -----destination layouts----- */
   /*  ------------------------- */
   .destination--grid-container {
-    --flow-space : 2rem;
+    --flow-space: 2rem;
     grid-template-areas:
       "title"
       "image"
@@ -585,6 +585,17 @@
     padding-top: 2.5rem;
   }
 
+  @media (min-width: 35em) {
+    .numbered-title {
+      justify-self: start;
+      margin-top: 2rem;
+    }
+    .destination-meta {
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
+
   @media (min-width: 45em) {
     .grid-container {
       text-align: left;
@@ -598,13 +609,31 @@
       place-items: end;
     }
 
-    .grid-container > *:first-child {
+    .home--grid-container > *:first-child {
       grid-column: 2;
       /* outline: 2px solid yellow; */
     }
-    .grid-container > *:last-child {
+    .home--grid-container > *:last-child {
       grid-column: 3;
       /* outline: 2px solid red; */
+    }
+    .destination--grid-container {
+      justify-items: start;
+      align-items: start;
+      grid-template-areas:
+        ". title title ."
+        ". image tabs ."
+        ". image content .";
+    }
+    .destination--grid-container > img {
+      max-width: 85%;
+    }
+    .destination-meta p {
+      font-size: 1.75rem;
+    }
+    .destination-meta {
+      justify-content: start;
+      --gap: min(6vw, 6rem);
     }
   }
 }
