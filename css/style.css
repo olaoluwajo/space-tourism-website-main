@@ -35,6 +35,7 @@
       --fs-600: 1.5rem;
       --fs-500: 1.25rem;
       --fs-400: 1rem;
+
     }
   }
 
@@ -42,10 +43,11 @@
     :root {
       /* FONT SIZE  FOR LARGEST SCREEN*/
       --fs-800: 6.25rem;
-      --fs-700: 3.5rem;
+      --fs-700: 3rem;
       --fs-600: 2rem;
       --fs-500: 1.75rem;
       --fs-400: 1.125rem;
+
     }
   }
 }
@@ -735,7 +737,7 @@
 
     .crew--grid-container {
       grid-template-areas:
-        ".  title title ."
+        ".  title image ."
         ". content image ."
         ". content image ."
         ". tabs image ." !important;

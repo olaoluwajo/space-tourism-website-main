@@ -36,15 +36,15 @@
     </header>
     <main id="main" class="grid-container technology--grid-container flow">
       <h1 class="numbered-title"><span aria-hidden="true">03</span> Space launch 101</h1>
-      <div class="dot-indicators flex">
-        <button aria-selected="true" class="ff-serif flex">1</button>
-        <button aria-selected="false" class="ff-serif flex">2</button>
-        <button aria-selected="false" class="ff-serif flex">3</button>
+      <div class="dot-indicators flex" role="tablist" aria-label="technology list">
+        <button data-image="vehicle-image" aria-selected="true" role="tab" aria-controls="vehicle-tab" tabindex="0" class="ff-serif flex">1</button>
+        <button  data-image="spaceport-image" aria-selected="false" role="tab" aria-controls="spaceport-tab" tabindex="-1" class="ff-serif flex">2</button>
+        <button  data-image="capsule-image" aria-selected="false" role="tab" aria-controls="capsule-tab" tabindex="-1" class="ff-serif flex">3</button>
       </div>
       <!-- /*  ------------------------- */ -->
       <!-- /* -----VEHICLE----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article class="crew-details flow">
+      <article class="crew-details flow" id="vehicle-tab" tabindex="0" role="tabpanel">
         <div class="flow-space-small flow">
           <h2 class="fs-400 ff-serif uppercase">The terminology...</h2>
           <p class="fs-700 uppercase ff-serif">Launch vehicle</p>
@@ -58,7 +58,7 @@
       <!-- /*  ------------------------- */ -->
       <!-- /* -----SPACEPORT----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article hidden class="crew-details flow">
+      <article hidden class="crew-details flow" id="spaceport-tab" tabindex="-1" role="tabpanel">
         <div class="flow-space-small flow">
           <h2 class="fs-400 ff-serif uppercase">The terminology...</h2>
           <p class="fs-700 uppercase ff-serif">Spaceport</p>
@@ -72,7 +72,7 @@
       <!-- /*  ------------------------- */ -->
       <!-- /* -----CAPSULE----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article hidden class="crew-details flow">
+      <article hidden class="crew-details flow" id="capsule-tab" tabindex="-1" role="tabpanel">
         <div class="flow-space-small flow">
           <h2 class="fs-400 ff-serif uppercase">The terminology...</h2>
           <p class="fs-700 uppercase ff-serif">Space capsule</p>
@@ -82,19 +82,21 @@
           flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.
         </p>
       </article>
-      <picture>
+      <picture id="vehicle-image">
         <source srcset="/assets/technology/image-launch-vehicle-portrait.jpg" media="(min-width: 45em)" />
         <img src="/assets/technology/image-launch-vehicle-landscape.jpg" alt="launch vehicle" />
       </picture>
-      <picture  style="display: none;">
+      <picture  style="display: none;" id="spaceport-image">
         <source srcset="/assets/technology/image-spaceport-portrait.jpg" media="(min-width: 45em)" />
         <img src="/assets/technology/image-spaceport-landscape.jpg" alt="spaceport" />
       </picture>
-      <picture  style="display: none;">
+      <picture  style="display: none;" id="capsule-image">
         <source srcset="/assets/technology/image-space-capsule-portrait.jpg" media="(min-width: 45em)" />
         <img src="/assets/technology/image-space-capsule-landscape.jpg" alt="spaceport" />
       </picture>
     </main>
   </body>
   <script src="/js/navigation.js"></script>
+  <script src="/js/tabs.js" defer></script>
+
 </html>
