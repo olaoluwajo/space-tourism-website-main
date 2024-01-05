@@ -776,7 +776,7 @@
 
 @layer image-rotation {
   .destination--grid-container > picture {
-    animation: spin 4s infinite linear;
+    animation: spin 30s infinite linear;
   }
   @keyframes spin {
     from {

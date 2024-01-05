@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/style.css" />
 
     <title>Frontend Mentor | Space tourism website</title>
+    <script src="/js/navigation.js" defer></script>
+    <script src="/js/tabs.js" defer></script>
   </head>
   <body class="destination">
     <a href="#main" class="skip-to-content">Skip to content</a>
@@ -23,7 +25,7 @@
             <a href="index.html" class="ff-serif-cond uppercase text-white letter-spacing-2"><span>00</span>Home</a>
           </li>
           <li class="active">
-            <a href="destination-moon.html" class="ff-serif-cond uppercase text-white letter-spacing-2"><span>01</span>Destination</a>
+            <a href="destination.html" class="ff-serif-cond uppercase text-white letter-spacing-2"><span>01</span>Destination</a>
           </li>
           <li>
             <a href="crew-commander.html" class="ff-serif-cond uppercase text-white letter-spacing-2"><span>02</span>Crew</a>
@@ -36,29 +38,32 @@
     </header>
     <main id="main" class="grid-container destination--grid-container flow">
       <h1 class="numbered-title"><span>01</span> Pick your destination</h1>
-      <picture>
+      <picture  id="moon-image">
         <source srcset="/assets/destination/image-moon.webp" type="image/webp" />
         <img src="assets/destination/image-moon.png" alt="the moon" />
       </picture>
-      <picture style="display: none">
+      <picture style="display: none;" id="mars-image">
         <source srcset="/assets/destination/image-mars.webp" type="image/webp" />
         <img src="assets/destination/image-mars.png" alt="the planet mars" />
       </picture>
-      <picture style="display: none">
+      <picture style="display: none" id="europa-image">
         <source srcset="/assets/destination/image-europa.webp" type="image/webp" />
         <img src="assets/destination/image-europa.png" alt="the planet europa" />
       </picture>
-      <picture style="display: none">
+      <picture style="display: none" id="titan-image">
         <source srcset="assets/destination/image-titan.webp" type="image/webp" />
         <img src="assets/destination/image-titan.png" alt="the moon titan" />
       </picture>
-      <div class="tab-list underline-indicators flex">
-        <button aria-selected="true" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Moon</button>
-        <button aria-selected="false" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Mars</button>
-        <button aria-selected="false" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Europa</button>
-        <button aria-selected="false" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Titan</button>
+      <div class="tab-list underline-indicators flex" role="tablist" aria-label="destination list">
+        <button data-image="moon-image" aria-selected="true" role="tab" aria-controls="moon-tab" tabindex="0" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Moon</button>
+        <button data-image="mars-image" aria-selected="false" role="tab" aria-controls="mars-tab" tabindex="-1" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Mars</button>
+        <button data-image="europa-image" aria-selected="false" role="tab" aria-controls="europa-tab" tabindex="-1" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Europa</button>
+        <button data-image="titan-image" aria-selected="false" role="tab" aria-controls="titan-tab" tabindex="-1" class="uppercase ff-serif-cond text-middle bg-dark letter-spacing-2">Titan</button>
       </div>
-      <article class="destination-info flow">
+      <!-- /*  ------------------------- */ -->
+      <!-- /* -----MOON----- */ -->
+      <!-- /*  ------------------------- */ -->
+      <article class="destination-info flow" id="moon-tab" tabindex="0" role="tabpanel"> 
         <h2 class="fs-800 ff-serif uppercase">Moon</h2>
 
         <p>
@@ -80,18 +85,14 @@
       <!-- /*  ------------------------- */ -->
       <!-- /* -----Mars----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article hidden class="destination-info flow">
+      <article hidden class="destination-info flow" id="mars-tab" tabindex="-1" role="tabpanel">
         <h2 class="fs-800 ff-serif uppercase">Mars</h2>
 
-        <p>
-          Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, 
-          the tallest planetary mountain in our solar system. It’s two and a half times 
-          the size of Everest!
-        </p>
+        <p>Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!</p>
         <div class="destination-meta flex">
           <div>
             <h3 class="fs-200 uppercase text-middle">Avg. distance</h3>
-            <p class="ff-serif uppercase"> 225 mil. km</p>
+            <p class="ff-serif uppercase">225 mil. km</p>
           </div>
           <div>
             <h3 class="fs-200 uppercase text-middle">Est. travel time</h3>
@@ -103,14 +104,12 @@
       <!-- /*  ------------------------- */ -->
       <!-- /* -----EUROPA----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article hidden class="destination-info flow" >
+      <article hidden class="destination-info flow" id="europa-tab" tabindex="-1" role="tabpanel">
         <h2 class="fs-800 ff-serif uppercase">Europa</h2>
 
         <p>
-          The smallest of the four Galilean moons orbiting Jupiter, Europa is a 
-          winter lover’s dream. With an icy surface, it’s perfect for a bit of 
-          ice skating, curling, hockey, or simple relaxation in your snug 
-          wintery cabin.
+          The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation
+          in your snug wintery cabin.
         </p>
         <div class="destination-meta flex">
           <div>
@@ -119,7 +118,7 @@
           </div>
           <div>
             <h3 class="fs-200 uppercase text-middle">Est. travel time</h3>
-            <p class="ff-serif uppercase"> 3 years</p>
+            <p class="ff-serif uppercase">3 years</p>
           </div>
         </div>
       </article>
@@ -127,13 +126,12 @@
       <!-- /*  ------------------------- */ -->
       <!-- /* -----TITAN----- */ -->
       <!-- /*  ------------------------- */ -->
-      <article hidden class="destination-info flow" >
+      <article hidden class="destination-info flow" id="titan-tab" tabindex="-1" role="tabpanel">
         <h2 class="fs-800 ff-serif uppercase">Titan</h2>
 
         <p>
-          The only moon known to have a dense atmosphere other than Earth, Titan 
-          is a home away from home (just a few hundred degrees colder!). As a 
-          bonus, you get striking views of the Rings of Saturn.
+          The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of
+          Saturn.
         </p>
         <div class="destination-meta flex">
           <div>
@@ -148,5 +146,4 @@
       </article>
     </main>
   </body>
-  <script src="/js/index.js"></script>
 </html>
