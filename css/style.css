@@ -658,6 +658,7 @@
   .destination--grid-container > picture {
     grid-area: image;
     max-width: 65%;
+    align-self: start;
   }
   .destination--grid-container > .tab-list {
     grid-area: tabs;
@@ -723,8 +724,8 @@
         ". image tabs ."
         ". image content .";
     }
-    .destination--grid-container > picture,
-    .crew--grid-container > picture {
+    .destination--grid-container > picture
+    {
       max-width: 80%;
     }
     .destination-meta p {
@@ -736,14 +737,20 @@
     }
 
     .crew--grid-container {
+      grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(1rem, 1fr);
       grid-template-areas:
-        ".  title image ."
+        ".  title title ."
         ". content image ."
         ". content image ."
         ". tabs image ." !important;
     }
     .crew--grid-container > .dot-indicators {
       justify-self: start;
+    }
+    .crew--grid-container > picture {
+      grid-column: span 2;
+      max-width: 90%;
+      align-self: end;
     }
     .technology--grid-container {
 
@@ -760,6 +767,7 @@
     }
     .technology--grid-container > picture {
       justify-self: end;
+      max-width: 100%;
     }
   }
 
